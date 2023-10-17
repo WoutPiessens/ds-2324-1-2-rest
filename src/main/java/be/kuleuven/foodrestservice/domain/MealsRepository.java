@@ -54,4 +54,35 @@ public class MealsRepository {
     public Collection<Meal> getAllMeal() {
         return meals.values();
     }
+
+    public Optional<Meal> getCheapestMeal() {
+        Meal cheapestMeal = null;
+
+        Double lowestPrice = Double.POSITIVE_INFINITY;
+        for (Meal meal : meals.values()) {
+            if (meal.getPrice() < lowestPrice) {
+                lowestPrice = meal.getPrice();
+                cheapestMeal = meal;
+            }
+
+        }
+        return Optional.ofNullable(cheapestMeal);
+    }
+
+
+    public Optional<Meal> getMostEnergeticMeal() {
+        Meal mostEnergeticMeal = null;
+
+        Integer mostKcals = 0;
+        for (Meal meal : meals.values()) {
+            if (meal.getKcal() > mostKcals) {
+                mostKcals = meal.getKcal();
+                mostEnergeticMeal = meal;
+            }
+
+        }
+        return Optional.ofNullable(mostEnergeticMeal);
+    }
+
+
 }
