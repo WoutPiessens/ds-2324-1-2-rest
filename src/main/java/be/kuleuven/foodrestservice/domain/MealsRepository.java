@@ -55,6 +55,22 @@ public class MealsRepository {
         return meals.values();
     }
 
+    public Integer addMeal(Meal meal){
+        meals.put(meal.id, meal);
+        return 200;
+    }
+
+    public Integer updateMeal(String mealid){
+        Meal meal = meals.get(mealid);
+        meal.setPrice(meal.getPrice() + 1.0 );
+        return 200;
+    }
+
+    public Integer deleteMeal(String mealid){
+        meals.remove(mealid);
+        return 200;
+    }
+
     public Optional<Meal> getCheapestMeal() {
         Meal cheapestMeal = null;
 
