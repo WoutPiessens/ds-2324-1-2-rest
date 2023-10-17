@@ -60,9 +60,9 @@ public class MealsRepository {
         return 200;
     }
 
-    public Integer updateMeal(String mealid){
-        Meal meal = meals.get(mealid);
-        meal.setPrice(meal.getPrice() + 1.0 );
+    public Integer updateMeal(String mealid, Meal newMeal){
+        meals.remove(mealid);
+        meals.put(newMeal.getId(), newMeal);
         return 200;
     }
 

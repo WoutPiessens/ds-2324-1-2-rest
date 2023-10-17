@@ -61,9 +61,8 @@ public class MealsRestRpcStyleController {
         return orderRepository.getAllOrder();
 
     }
-
     @PostMapping("/restrpc/meals")
-    Integer addMeal(){
+    Integer addMeal(@RequestBody Meal meal2){
         Meal meal = new Meal();
         UUID uniqueID = UUID.randomUUID();
         String id = uniqueID.toString();
@@ -73,12 +72,12 @@ public class MealsRestRpcStyleController {
         meal.setMealType(MealType.MEAT);
         meal.setKcal(777);
         meal.setPrice(9.95);
-        return mealsRepository.addMeal(meal);
+        return mealsRepository.addMeal(meal2);
     }
 
     @PutMapping("/restrpc/meals/{mealid}")
-    Integer updateMeal(@PathVariable String mealid){
-        return mealsRepository.updateMeal(mealid);
+    Integer updateMeal(@PathVariable String mealid, @RequestBody Meal meal){
+        return mealsRepository.updateMeal(mealid, meal);
     }
 
     @DeleteMapping("/restrpc/meals/{mealid}")
